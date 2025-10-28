@@ -4,16 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "/",
-  server: {
-    host: "0.0.0.0",
-    port: 5000,
-    strictPort: true,
-    hmr: {
-      clientPort: 443,
-      protocol: 'wss',
-    },
-  },
+  base: mode === "production" ? "/vite_react_shadcn_ts/" : "/",
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
